@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		352C50CC224CB83600396171 /* Tweak.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 352C50C6224CB1E200396171 /* Tweak.xmi */; };
+		352C50D0224CCF4300396171 /* WBMsgManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 352C50CF224CCF4300396171 /* WBMsgManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +29,10 @@
 		352C50C4224CB1D100396171 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
 		352C50C5224CB1D100396171 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		352C50C6224CB1E200396171 /* Tweak.xmi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Tweak.xmi; sourceTree = SOURCE_ROOT; };
-		352C50C8224CB68D00396171 /* xctheos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xctheos.h; path = "../../../../../Desktop/Xcode-Theos-master/xctheos.h"; sourceTree = "<group>"; };
+		352C50C8224CB68D00396171 /* xctheos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xctheos.h; sourceTree = "<group>"; };
 		352C50C9224CB6C500396171 /* wechatbot-prefix-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wechatbot-prefix-header.h"; sourceTree = "<group>"; };
 		352C50CB224CB7E100396171 /* MicroMessengerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroMessengerAppDelegate.h; sourceTree = "<group>"; };
+		352C50CF224CCF4300396171 /* WBMsgManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WBMsgManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		352C50BE224CB1A000396171 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				352C50CF224CCF4300396171 /* WBMsgManager.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352C50D0224CCF4300396171 /* WBMsgManager.mm in Sources */,
 				352C50CC224CB83600396171 /* Tweak.xmi in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 #ifndef wechatbot_prefix_header_h
 #define wechatbot_prefix_header_h
 
+#import <objc/runtime.h> 
 #import "xctheos.h"
 #import "MicroMessengerAppDelegate.h"
 

@@ -3,8 +3,14 @@
 
 HOOK(MicroMessengerAppDelegate)
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+//    [alert show];
+//    NSString *str = [NSString stringWithFormat:@"name: %@",@"xiaoming"];
+//    NSLog(@"%@",str);
+    
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"works" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    NSLog(@"vc:%@",vc);
+    
     return ORIG_T();
 }
 END()
