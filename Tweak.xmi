@@ -1,0 +1,10 @@
+
+#import "wechatbot-prefix-header.h"
+
+HOOK(MicroMessengerAppDelegate)
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    [alert show];
+    return ORIG_T();
+}
+END()
