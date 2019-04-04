@@ -1,0 +1,6 @@
+framework module WCBFWStatic {
+  umbrella header "WCBFWStatic.h"
+
+  export *
+  module * { export * }
+}

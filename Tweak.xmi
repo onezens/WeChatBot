@@ -1,8 +1,11 @@
 
 #import "wechatbot-prefix-header.h"
+#import <WCBFWStatic/WCBFWStatic.h>
+#import <WCBFWDynamic/WCBFWDynamic.h>
+#import <WCBStatic/WCBStatic.h>
+#import <WCBFWDynamic/WCBFWDynamic.h>
 
-
-#pragma mark -MicroMessengerAppDelegate
+#pragma mark - MicroMessengerAppDelegate
 
 HOOK(MicroMessengerAppDelegate)
 
@@ -11,8 +14,17 @@ HOOK(MicroMessengerAppDelegate)
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for logos hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
     [alert show];
     
+    [WCBStatic logInfo];
+    [WCBFWStatic logInfo];
+    [WCBFWDynamic logInfo];
+    [WCBFWDynamic logInfo];
+    
     BOOL rel = ORIG_T();
     return rel;
 }
 
+
+
 END()
+
+

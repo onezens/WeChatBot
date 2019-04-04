@@ -20,7 +20,7 @@ WeChatBot_OBJCFLAGS += -I./WeChatBot/Headers/wechatHeaders/
 WeChatBot_OBJCFLAGS += -I./WeChatBot/Headers/
 
 #忽略OC警告
-WeChatBot_OBJCFLAGS +=  -Wno-deprecated-declarations
+WeChatBot_OBJCFLAGS +=  -Wno-deprecated-declarations -Wno-unused-variable
 
 #编译的实现文件
 WeChatBot_FILES = Tweak.xmi
@@ -33,7 +33,21 @@ WeChatBot_FRAMEWORKS = Foundation UIKit
 #导入系统静态库
 WeChatBot_LIBRARIES = stdc++ c++
 
+#导入第三方Frameworks, 动态库需特殊处理
+WeChatBot_LDFLAGS += -F./Frameworks  # 识别的库实现
+WeChatBot_CFLAGS += -F./Frameworks   # 头文件识别
+WeChatBot_FRAMEWORKS += WCBFWStatic WCBFWDynamic
+
+#导入第三方lib
+WeChatBot_LDFLAGS += -L./Libraries/WCBStatic -L./Libraries/WCBDyLib # 识别的库实现
+WeChatBot_CFLAGS += -I./Libraries/WCBStatic/include -I./Libraries/WCBDyLib/include # 头文件识别
+WeChatBot_LIBRARIES += WCBStatic WCBDyLib
+
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	install.exec "killall -9 WeChat"
+i::
+	make
+	make package
+	make install

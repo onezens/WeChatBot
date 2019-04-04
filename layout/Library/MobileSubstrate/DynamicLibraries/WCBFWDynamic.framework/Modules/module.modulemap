@@ -1,0 +1,6 @@
+framework module WCBFWDynamic {
+  umbrella header "WCBFWDynamic.h"
+
+  export *
+  module * { export * }
+}

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		352C50CC224CB83600396171 /* Tweak.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 352C50C6224CB1E200396171 /* Tweak.xmi */; };
 		352C50D0224CCF4300396171 /* WBMsgManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 352C50CF224CCF4300396171 /* WBMsgManager.mm */; };
+		352C51262255F58A00396171 /* WCBFWDynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352C51242255F58A00396171 /* WCBFWDynamic.framework */; };
+		352C51272255F58A00396171 /* WCBFWStatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352C51252255F58A00396171 /* WCBFWStatic.framework */; };
+		353302B32255F82B00969DFC /* libWCBStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 353302B22255F82B00969DFC /* libWCBStatic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +36,11 @@
 		352C50C9224CB6C500396171 /* wechatbot-prefix-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wechatbot-prefix-header.h"; sourceTree = "<group>"; };
 		352C50CB224CB7E100396171 /* MicroMessengerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroMessengerAppDelegate.h; sourceTree = "<group>"; };
 		352C50CF224CCF4300396171 /* WBMsgManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WBMsgManager.mm; sourceTree = "<group>"; };
+		352C51242255F58A00396171 /* WCBFWDynamic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCBFWDynamic.framework; path = Frameworks/WCBFWDynamic.framework; sourceTree = "<group>"; };
+		352C51252255F58A00396171 /* WCBFWStatic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCBFWStatic.framework; path = Frameworks/WCBFWStatic.framework; sourceTree = "<group>"; };
+		352C51282255F59500396171 /* WCBStatic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WCBStatic; path = Libraries/WCBStatic; sourceTree = "<group>"; };
+		353302B22255F82B00969DFC /* libWCBStatic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWCBStatic.a; path = Libraries/WCBStatic/libWCBStatic.a; sourceTree = "<group>"; };
+		353302C922560BFB00969DFC /* WCBDyLib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WCBDyLib; path = Libraries/WCBDyLib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				353302B32255F82B00969DFC /* libWCBStatic.a in Frameworks */,
+				352C51272255F58A00396171 /* WCBFWStatic.framework in Frameworks */,
+				352C51262255F58A00396171 /* WCBFWDynamic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +64,7 @@
 				352C50B4224CAFAD00396171 /* WeChatBot */,
 				352C50C6224CB1E200396171 /* Tweak.xmi */,
 				352C50B3224CAFAD00396171 /* Products */,
+				352C50DA2255E67100396171 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +135,18 @@
 				352C50CB224CB7E100396171 /* MicroMessengerAppDelegate.h */,
 			);
 			path = wechatHeaders;
+			sourceTree = "<group>";
+		};
+		352C50DA2255E67100396171 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				353302C922560BFB00969DFC /* WCBDyLib */,
+				353302B22255F82B00969DFC /* libWCBStatic.a */,
+				352C51282255F59500396171 /* WCBStatic */,
+				352C51242255F58A00396171 /* WCBFWDynamic.framework */,
+				352C51252255F58A00396171 /* WCBFWStatic.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -293,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -306,7 +330,20 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65RJX5V69R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/WCBStatic/include",
+					"$(PROJECT_DIR)/Libraries/WCBDyLib/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/WCBStatic",
+					"$(PROJECT_DIR)/Libraries/WCBDyLib",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -319,7 +356,20 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65RJX5V69R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/WCBStatic/include",
+					"$(PROJECT_DIR)/Libraries/WCBDyLib/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/WCBStatic",
+					"$(PROJECT_DIR)/Libraries/WCBDyLib",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
