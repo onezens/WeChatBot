@@ -1,34 +1,37 @@
 DEBUG = 1
-#iphone的ip地址
+#用于调试的设备地址
 THEOS_DEVICE_IP = localhost
 THEOS_DEVICE_PORT = 2222
-# SDKVERSION=10.3 
-# SYSROOT = $(THEOS)/sdks/iPhoneOS10.3.sdk
 ARCHS = arm64
-#支持的ios版本
-TARGET = iphone::10.3:7.0
+
+#用于编译的SDK和支持的ios最低版本
+TARGET = iphone:11.2:9.0
 
 include $(THEOS)/makefiles/common.mk
 
+# 工程名称
 TWEAK_NAME = WeChatBot
 
-WeChatBot_CFLAGS = -fobjc-arc #-D__APPLE__=1 -D__cplusplus=1
+# 采用ARC内存管理
+WeChatBot_CFLAGS = -fobjc-arc
 
 #头文件
 WeChatBot_OBJCFLAGS += -I./WeChatBot/Headers/wechatHeaders/ 
-WeChatBot_OBJCFLAGS += -I./WeChatBot/Headers/ -I/opt/theos/include -I/opt/theos/vendor/include -I/opt/theos/include/_fallback -include /opt/theos/Prefix.pch
+WeChatBot_OBJCFLAGS += -I./WeChatBot/Headers/
 
-#导入系统的framework
+#忽略OC警告
+WeChatBot_OBJCFLAGS +=  -Wno-deprecated-declarations
+
+#编译的实现文件
+WeChatBot_FILES = Tweak.xmi
+WeChatBot_FILES += $(wildcard WeChatBot/Classes/*.mm) $(wildcard WeChatBot/Classes/*/*.mm)
+WeChatBot_FILES += $(wildcard WeChatBot/Classes/*.m) $(wildcard WeChatBot/Classes/*/*.m)
+
+#导入系统的frameworks
 WeChatBot_FRAMEWORKS = Foundation UIKit
 
 #导入系统静态库
-# WeChatBot_LDFLAGS += -lc++ -l
-WeChatBot_LIBRARIES = substrate stdc++ c++
-WeChatBot_CXXFLAGS = -std=c++11 -stdlib=libc++
-export ADDITIONAL_CPPFLAGS +=  -std=c++11
-
-#编译的实现文件
-WeChatBot_FILES = Tweak.xmi WeChatBot/Classes/WBMsgManager.mm
+WeChatBot_LIBRARIES = stdc++ c++
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
