@@ -34,20 +34,23 @@ WeChatBot_FRAMEWORKS = Foundation UIKit
 WeChatBot_LIBRARIES = stdc++ c++
 
 #导入第三方Frameworks, 动态库需特殊处理
-WeChatBot_LDFLAGS += -F./Frameworks  # 识别的库实现
-WeChatBot_CFLAGS += -F./Frameworks   # 头文件识别
+WeChatBot_LDFLAGS += -F./Libraries/dynamic -F./Libraries/static   # 识别的库实现
+WeChatBot_CFLAGS += -F./Libraries/dynamic -F./Libraries/static    # 头文件识别
 WeChatBot_FRAMEWORKS += WCBFWStatic WCBFWDynamic
 
 #导入第三方lib
-WeChatBot_LDFLAGS += -L./Libraries/WCBStatic -L./Libraries/WCBDyLib # 识别的库实现
-WeChatBot_CFLAGS += -I./Libraries/WCBStatic/include -I./Libraries/WCBDyLib/include # 头文件识别
+WeChatBot_LDFLAGS += -L./Libraries/dynamic -L./Libraries/static # 识别的库实现
+WeChatBot_CFLAGS += -I./Libraries/include  						# 头文件识别
 WeChatBot_LIBRARIES += WCBStatic WCBDyLib
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-
+all::
+	sh bin/check_dynamic_lib.sh
+	make package
 after-install::
 	install.exec "killall -9 WeChat"
 i::
 	make
 	make package
 	make install
+

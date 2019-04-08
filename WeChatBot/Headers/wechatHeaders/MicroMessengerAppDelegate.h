@@ -8,4 +8,7 @@
 #import <UIKit/UIKit.h>
 void testcpp();
 @interface MicroMessengerAppDelegate : NSObject <UIApplicationDelegate>
+
+- (void)testHook;
+
 @end

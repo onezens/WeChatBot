@@ -3,7 +3,7 @@
 #import <WCBFWStatic/WCBFWStatic.h>
 #import <WCBFWDynamic/WCBFWDynamic.h>
 #import <WCBStatic/WCBStatic.h>
-#import <WCBFWDynamic/WCBFWDynamic.h>
+#import <WCBDyLib/WCBDyLib.h>
 
 #pragma mark - MicroMessengerAppDelegate
 
@@ -11,18 +11,23 @@ HOOK(MicroMessengerAppDelegate)
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for logos hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-    [alert show];
-    
-    [WCBStatic logInfo];
-    [WCBFWStatic logInfo];
-    [WCBFWDynamic logInfo];
-    [WCBFWDynamic logInfo];
-    
     BOOL rel = ORIG_T();
+    [self testHook];
     return rel;
 }
 
+NEW()
+- (void)testHook {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Works for logos hook" message:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+    [alert show];
+
+    [WCBStatic logInfo];
+    [WCBDyLib logInfo];
+    [WCBFWStatic logInfo];
+    [WCBFWDynamic logInfo];
+    
+}
 
 
 END()

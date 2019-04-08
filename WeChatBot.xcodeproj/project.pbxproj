@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		352C50CC224CB83600396171 /* Tweak.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 352C50C6224CB1E200396171 /* Tweak.xmi */; };
 		352C50D0224CCF4300396171 /* WBMsgManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 352C50CF224CCF4300396171 /* WBMsgManager.mm */; };
-		352C51262255F58A00396171 /* WCBFWDynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352C51242255F58A00396171 /* WCBFWDynamic.framework */; };
-		352C51272255F58A00396171 /* WCBFWStatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352C51252255F58A00396171 /* WCBFWStatic.framework */; };
-		353302B32255F82B00969DFC /* libWCBStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 353302B22255F82B00969DFC /* libWCBStatic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,11 +33,9 @@
 		352C50C9224CB6C500396171 /* wechatbot-prefix-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wechatbot-prefix-header.h"; sourceTree = "<group>"; };
 		352C50CB224CB7E100396171 /* MicroMessengerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroMessengerAppDelegate.h; sourceTree = "<group>"; };
 		352C50CF224CCF4300396171 /* WBMsgManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WBMsgManager.mm; sourceTree = "<group>"; };
-		352C51242255F58A00396171 /* WCBFWDynamic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCBFWDynamic.framework; path = Frameworks/WCBFWDynamic.framework; sourceTree = "<group>"; };
-		352C51252255F58A00396171 /* WCBFWStatic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCBFWStatic.framework; path = Frameworks/WCBFWStatic.framework; sourceTree = "<group>"; };
-		352C51282255F59500396171 /* WCBStatic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WCBStatic; path = Libraries/WCBStatic; sourceTree = "<group>"; };
-		353302B22255F82B00969DFC /* libWCBStatic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWCBStatic.a; path = Libraries/WCBStatic/libWCBStatic.a; sourceTree = "<group>"; };
-		353302C922560BFB00969DFC /* WCBDyLib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WCBDyLib; path = Libraries/WCBDyLib; sourceTree = "<group>"; };
+		353302CD225B3F1A00969DFC /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Libraries/include; sourceTree = "<group>"; };
+		353302CE225B3F1A00969DFC /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = Libraries/static; sourceTree = "<group>"; };
+		353302CF225B3F1A00969DFC /* dynamic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dynamic; path = Libraries/dynamic; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,9 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				353302B32255F82B00969DFC /* libWCBStatic.a in Frameworks */,
-				352C51272255F58A00396171 /* WCBFWStatic.framework in Frameworks */,
-				352C51262255F58A00396171 /* WCBFWDynamic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,11 +132,9 @@
 		352C50DA2255E67100396171 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				353302C922560BFB00969DFC /* WCBDyLib */,
-				353302B22255F82B00969DFC /* libWCBStatic.a */,
-				352C51282255F59500396171 /* WCBStatic */,
-				352C51242255F58A00396171 /* WCBFWDynamic.framework */,
-				352C51252255F58A00396171 /* WCBFWStatic.framework */,
+				353302CF225B3F1A00969DFC /* dynamic */,
+				353302CD225B3F1A00969DFC /* include */,
+				353302CE225B3F1A00969DFC /* static */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -332,17 +322,15 @@
 				DEVELOPMENT_TEAM = 65RJX5V69R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Libraries/dynamic",
+					"$(PROJECT_DIR)/Libraries/static",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libraries/WCBStatic/include",
-					"$(PROJECT_DIR)/Libraries/WCBDyLib/include",
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/WCBStatic",
-					"$(PROJECT_DIR)/Libraries/WCBDyLib",
+					"$(PROJECT_DIR)/Libraries/dynamic",
+					"$(PROJECT_DIR)/Libraries/static",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,17 +346,15 @@
 				DEVELOPMENT_TEAM = 65RJX5V69R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Libraries/dynamic",
+					"$(PROJECT_DIR)/Libraries/static",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libraries/WCBStatic/include",
-					"$(PROJECT_DIR)/Libraries/WCBDyLib/include",
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Libraries/WCBStatic",
-					"$(PROJECT_DIR)/Libraries/WCBDyLib",
+					"$(PROJECT_DIR)/Libraries/dynamic",
+					"$(PROJECT_DIR)/Libraries/static",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
