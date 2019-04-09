@@ -1,0 +1,13 @@
+#!/bin/bash
+TWEAK_NAME=WeChatBot
+cydiaLibPath=/Library/MobileSubstrate/DynamicLibraries/$TWEAK_NAME
+declare -a cydia
+cydia=($CYDIA)
+if [[ ${CYDIA+@} ]]; then
+    eval "echo 'finish:open' >&${cydia[0]}"
+else
+	
+    echo "uninstall completed!"
+fi
+killall -9 WeChat
+exit 0

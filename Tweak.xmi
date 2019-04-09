@@ -5,6 +5,9 @@
 #import <WCBStatic/WCBStatic.h>
 #import <WCBDyLib/WCBDyLib.h>
 
+#define kWCBSrcPath @"/Library/AppSupport/WeChatBot/"
+#define kWCBImgSrcPath @"/Library/AppSupport/WeChatBot/imgs"
+
 #pragma mark - MicroMessengerAppDelegate
 
 HOOK(MicroMessengerAppDelegate)
@@ -26,6 +29,13 @@ NEW()
     [WCBDyLib logInfo];
     [WCBFWStatic logInfo];
     [WCBFWDynamic logInfo];
+    
+    UIImage *img = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/wcb_icon.png", kWCBImgSrcPath]];
+    NSLog(@"[WeChatBot] img: %@", img);
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+    [imgView sizeToFit];
+    imgView.center = CGPointMake(46, 60);
+    [self.window addSubview:imgView];
     
 }
 

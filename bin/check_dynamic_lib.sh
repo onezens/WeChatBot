@@ -1,6 +1,6 @@
 TWEAK_NAME=WeChatBot
-dylibPath=Libraries/dynamic
 cydiaLibPath=/Library/MobileSubstrate/DynamicLibraries/$TWEAK_NAME
+dylibPath=Libraries/dynamic
 oriDylibPath=$dylibPath/ori
 tweakLayoutPath=layout$cydiaLibPath
 

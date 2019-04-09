@@ -72,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				352C50BE224CB1A000396171 /* Classes */,
-				352C50BF224CB1A000396171 /* Frameworks */,
 				352C50C0224CB1A000396171 /* Headers */,
 				352C50C1224CB1A000396171 /* ThirdLib */,
 			);
@@ -85,13 +84,6 @@
 				352C50CF224CCF4300396171 /* WBMsgManager.mm */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		352C50BF224CB1A000396171 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		352C50C0224CB1A000396171 /* Headers */ = {
@@ -326,7 +318,10 @@
 					"$(PROJECT_DIR)/Libraries/static",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/include",
+					/opt/theos/vendor/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/dynamic",
@@ -350,7 +345,10 @@
 					"$(PROJECT_DIR)/Libraries/static",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/include",
+					/opt/theos/vendor/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/dynamic",
