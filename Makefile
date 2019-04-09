@@ -52,7 +52,7 @@ before-package::
 	chmod 755 .theos/_/DEBIAN/postinst
 	chmod 755 .theos/_/DEBIAN/postrm
 after-install::
-	install.exec "killall -9 SpringBoard"
+	install.exec "killall -9 WeChat"
 p::
 	make package
 c::
