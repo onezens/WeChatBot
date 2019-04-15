@@ -8,14 +8,65 @@
 #define kWCBSrcPath @"/Library/AppSupport/WeChatBot/"
 #define kWCBImgSrcPath @"/Library/AppSupport/WeChatBot/imgs"
 
+typedef void(^LogTestBlk)(void);
+
+#pragma mark - XiaoMing
+
+@interface WCBXiaoming: NSObject
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) NSInteger age;
+
+- (void)logInfo;
+
++ (void)sayHello;
+
+@end
+
+
+SUBCLASS(WCBXiaoming, NSObject)
+
+NEWPROPERTY_T(NSInteger, assign, age);
+NEWPROPERTY(NSString, copy, name);
+
+NEW()
++(void)sayHello {
+    NSLog(@"xiaoming say hello.");
+}
+
+NEW()
+- (void)logInfo {
+    NSLog(@"log info name: %@  age: %zd", self.name, self.age);
+}
+
+
+END_SUBCLASS()
+
+
+
 #pragma mark - MicroMessengerAppDelegate
 
+@interface MicroMessengerAppDelegate()
+
+@property (nonatomic, strong) UIImage *img;
+@property (nonatomic, assign) NSTimeInterval duration;
+@property (nonatomic, copy) LogTestBlk logTest;
+
+- (void)testXcTheosLogos;
+
+@end
+
 HOOK(MicroMessengerAppDelegate)
+
+NEWPROPERTY(UIImage, retain, img);
+NEWPROPERTY_T(double, assign, duration);
+NEWPROPERTY_Block(LogTestBlk, logTest);
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     BOOL rel = ORIG_T();
     [self testHook];
+    [self testXcTheosLogos];
     return rel;
 }
 
@@ -31,14 +82,38 @@ NEW()
     [WCBFWDynamic logInfo];
     
     UIImage *img = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/wcb_icon.png", kWCBImgSrcPath]];
-    NSLog(@"[WeChatBot] img: %@", img);
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+    self.img = img;
+    NSLog(@"[WeChatBot] img: %@", self.img);
+    
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:self.img];
     [imgView sizeToFit];
     imgView.center = CGPointMake(46, 60);
     [self.window addSubview:imgView];
     
 }
 
+
+NEW()
+- (void)testXcTheosLogos {
+    
+    self.duration = [[NSDate date] timeIntervalSince1970];
+    __weak typeof(self)weakSelf = self;
+    self.logTest = ^{
+        NSLog(@"[WeChatBot] img: %@", weakSelf.img);
+        NSLog(@"[WeChatBot] duration: %f", weakSelf.duration);
+    };
+    
+    if(self.logTest) {
+        self.logTest();
+    }
+    
+    [GET_CLASS(WCBXiaoming) sayHello];
+    WCBXiaoming *xm = [GET_CLASS(WCBXiaoming) new];
+    xm.age = 18;
+    xm.name = @"wang xiao ming";
+    [xm logInfo];
+}
 
 END()
 

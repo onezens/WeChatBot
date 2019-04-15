@@ -30,7 +30,7 @@
         #define ORIG(...) nil
         #define ORIG_T(...) 0
         #define GET_CLASS(stuff) objc_getClass(STRING(stuff))
-        #define SUBCLASS(stuff, superclass) @interface stuff : superclass @end @implementation stuff
+        #define SUBCLASS(stuff, superclass) @interface stuff()  @end @implementation stuff
         #define END_SUBCLASS() @end
         #define CTOR() static void inline stuff()
         #define NEWPROPERTY(type, strong, name)
