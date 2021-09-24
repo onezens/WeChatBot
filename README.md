@@ -1,7 +1,7 @@
 在创建一个逆向工程项目时，如何让工程使用起来更加便捷和易于扩展，以及编译器识别，能够大大提升我们日常的开发效率以及代码的质量。本文主要描述了，如果使用Theos的tweak工程，创建一个可以被Xcode编译器识别的项目工程，以及工程中常用的配置。
 
 ## 搭建逆向环境
-https://www.jianshu.com/p/100e34a043e3
+https://www.onezen.cc/2017/09/16/iosrevert/revdevconfig.html
 
 搭建好环境之后，创建对应的tweak工程项目
 
@@ -9,25 +9,25 @@ https://www.jianshu.com/p/100e34a043e3
 
 根据前面创建好的tweak项目名称，创建一个Xcode静态库项目，然后将tweak和创建的Xcode项目混合到一起
 
-![](https://upload-images.jianshu.io/upload_images/1216462-d602af3788b41a13.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://src.onezen.cc/blog/1216462-d602af3788b41a13.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 在Xcode项目里面创建一个Config文件夹（New Group Without Folder），将Makefile、对应的plist文件、control配置文件，不要copy放到此目录下。 然后在Xcode里面，创建对应的文件夹，然后将生成的`.xm`文件的后缀名，全部替换为`.xmi` ，并且放到项目的最外层，作为唯一的入口类
 
 设置Tweak.xmi在Xcode编译器识别类型为`Objective-C++`
 
-![](https://upload-images.jianshu.io/upload_images/1216462-e6a4fa8809716f16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://src.onezen.cc/blog/1216462-e6a4fa8809716f16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![](https://upload-images.jianshu.io/upload_images/1216462-6b7965fe33f1717f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://src.onezen.cc/blog/1216462-6b7965fe33f1717f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 设置XcodeTheos头文件，让编译器识别logos语法，对应的头文件的地址：[https://github.com/onezens/Xcode-Theos](https://github.com/onezens/Xcode-Theos)，导入项目之后，创建一个全局头文件，并且到该头文件放到`tweak.xmi`里面，发现里面的代码是黑色的，没有被编译器识别，这时候，关闭项目重新打开后发现会被Xcode重新识别了
 
 接着设置`XcodeTheos`的宏，让Xcode识别logos宏
-![](https://upload-images.jianshu.io/upload_images/1216462-e0e0023f295f139f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://src.onezen.cc/blog/1216462-e0e0023f295f139f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 一起设置好之后，开始写logos的hook代码，一切正常的话，你会发现Xcode写起logos代码超级顺畅，并且编译Xcode提示成功
 
-![](https://upload-images.jianshu.io/upload_images/1216462-7fc24c32765286fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://src.onezen.cc/blog/1216462-7fc24c32765286fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 将Xcode的配置和Makefile进行同步
 
