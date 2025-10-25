@@ -5,7 +5,7 @@ THEOS_DEVICE_PORT = 2222
 ARCHS = arm64
 
 #用于编译的SDK和支持的ios最低版本
-TARGET = iphone:11.2:9.0
+TARGET = iphone:latest:13.0
 
 include $(THEOS)/makefiles/common.mk
 

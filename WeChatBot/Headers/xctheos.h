@@ -37,6 +37,7 @@
         #define NEWPROPERTY_T(type, assign, name)
         #define NEWPROPERTY_Block(type, name)
     #else
+        #include <substrate.h>
         #define CONFIG(stuff) %config(stuff)
         #define INIT(stuff) %init(stuff)
         #define GROUP(stuff) %group stuff
